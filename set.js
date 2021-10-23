@@ -43,10 +43,23 @@ class mySet {
         }
     }
 
+    deleteValue(element) {
+        if (this.tab.indexOf(element) !== -1) {
+            for (let i = 0; i < this.tab.length; i++){
+                if (this.tab[i] === element) {
+                    this.tab.splice(i,1);
+                }
+            }
+        }
+    }
+
 
 }
 
 let dataSet = new mySet();
 
 dataSet.addValue(3);
+dataSet.print();
+console.log(dataSet.getValues());
+dataSet.deleteValue(2); //deletes it in the set if it finds the value
 dataSet.print();
