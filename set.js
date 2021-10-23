@@ -3,19 +3,50 @@ class mySet {
     
 
     constructor() {
-        this.tab = [];
+        this.tab = [1,2,3,4];
         console.log("constructing class object");
     }
 
 
-    setValues() {
-        for (let i = 0; i < 10; i++) {
-            this.tab[i] = Math.floor(Math.random() * (100-1) + 1);
+    addValue(element) {
+        let x = this.includeValue(element);
+        console.log(x);
+        if (x === false) {
+            this.tab.push(element);
+        }
+       
+    }
+
+    includeValue(element) {
+
+        let check = 0;
+
+        for (let i = 0; i <  this.tab.length; i++) {
+            
+            if (this.tab[i] === element) {
+                check++;
+                return true;
+            }
+
+        }
+
+        return false;
+    }
+
+    getValues() {
+        return this.tab;
+    }
+
+    print() {
+        for (let i = 0; i < this.tab.length; i++) {
             console.log(this.tab[i]);
         }
     }
+
+
 }
 
 let dataSet = new mySet();
 
-dataSet.setValues();
+dataSet.addValue(3);
+dataSet.print();
