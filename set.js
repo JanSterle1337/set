@@ -3,14 +3,14 @@ class mySet {
     
 
     constructor() {
-        this.tab = [1,2,3,4];
+        this.tab = [1,500,100,4];
         console.log("constructing class object");
     }
 
 
     addValue(element) {
         let x = this.includeValue(element);
-        console.log(x);
+        
         if (x === false) {
             this.tab.push(element);
         }
@@ -54,23 +54,29 @@ class mySet {
     }
 
     createUnion(otherSet) {
-
+        /*  !!!NOTE!!! first method of making an union set
        let unionTab = [...this.tab, ...otherSet.tab];
 
        let unionStack = new  mySet();
        unionStack.tab = [ ...new Set(unionTab)]
-       return unionStack;
+       return unionStack; */
        
 
-      
-        /*
-       for (let i = 0; i < set1Length; i++) {
-           unionStack.tab[i] = this.dataSet.tab[i];
+
+        /*  second method of making an union set */
+
+       let unionSet = new mySet();
+
+       for (let i = 0; i < this.tab.length; i++) {
+           unionSet.addValue(this.tab[i]);
        }
 
-       for (let j = 0; j < set2Length; j++) {
-           
-       } */
+       for (let j = 0; j < otherSet.tab.length; j++)  {
+            unionSet.addValue(otherSet.tab[j]);
+      
+        }
+
+        return unionSet;
 
     }
 
@@ -82,14 +88,17 @@ class mySet {
 let dataSet = new mySet();
 let dataSet2 = new mySet();
 dataSet.addValue(3);
-dataSet2.addValue(100);
+dataSet2.addValue(999);
 dataSet2.addValue(500);
+console.log("print of set1: ");
 dataSet.print();
 console.log(dataSet.getValues());
 dataSet.deleteValue(2); //deletes it in the set if it finds the value
+console.log("print of set2: ");
 dataSet.print();
 
-Union = dataSet.createUnion(dataSet2);
+Union = dataSet.createUnion(dataSet2);  //creates an object of set that includes elements of set1 and set2
+console.log("print of union set: ");
 Union.print();
 
 
