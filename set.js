@@ -53,13 +53,43 @@ class mySet {
         }
     }
 
+    createUnion(otherSet) {
+
+       let unionTab = [...this.tab, ...otherSet.tab];
+
+       let unionStack = new  mySet();
+       unionStack.tab = [ ...new Set(unionTab)]
+       return unionStack;
+       
+
+      
+        /*
+       for (let i = 0; i < set1Length; i++) {
+           unionStack.tab[i] = this.dataSet.tab[i];
+       }
+
+       for (let j = 0; j < set2Length; j++) {
+           
+       } */
+
+    }
+
+
+
 
 }
 
 let dataSet = new mySet();
-
+let dataSet2 = new mySet();
 dataSet.addValue(3);
+dataSet2.addValue(100);
+dataSet2.addValue(500);
 dataSet.print();
 console.log(dataSet.getValues());
 dataSet.deleteValue(2); //deletes it in the set if it finds the value
 dataSet.print();
+
+Union = dataSet.createUnion(dataSet2);
+Union.print();
+
+
