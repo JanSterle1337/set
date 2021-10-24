@@ -128,8 +128,36 @@ class mySet {
         return differenceSet;        
     }
 
+    findSubset(otherSet) {  //not sure if implemented correctly!!!
+        let subSet = new mySet();
+        let subTab = [];
+        let counter = 0;
+        for (let i = 0; i < this.tab.length; i++) {
+            let temp = this.tab[i];
+            
+            if (otherSet.tab.indexOf(temp) !== -1) {
+                subTab[counter] = temp;
+                counter++;
+            } 
+        }
+
+        console.log("Subset of of first set to the other set: ");
+        for (let i = 0; i < subTab.length; i++) {
+            console.log(subTab[i]);
+        }
+
+
+        subSet.tab = subTab;
+
+        return subSet;
+
+    }
+
 
 }
+
+
+
 
 let dataSet = new mySet();
 let dataSet2 = new mySet();
@@ -156,3 +184,7 @@ Intersection.print();  //it works just fine...we deleted
 Difference = dataSet.findDifference(dataSet2);
 console.log("print of difference set: ");
 Difference.print();
+
+
+subSet = dataSet.findSubset(dataSet2);
+
